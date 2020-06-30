@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body class="index">
+<div class="headerIndex">
+    <h1>Simple projekt</h1>
+    <h2 th:utext="${message}">..!..</h2>
+    <button type="button"><a class="btn-two" th:href="@{/personList}">User List</a></button>
+</div>
+</body>
+<footer class="footerPerson"><p>2020 Ernest Jewczyn</p></footer>
+</html>

@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
+    // Klassen variable
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -64,10 +66,13 @@ public class User {
     @Column(name = "spitzname")
     private String spitzname;
 
+    // Einfache konstruktor
+
     public User(){
 
     }
 
+    // Konstruktor
 
     public User(String name, String vorname, String email, String telefon, String strasse, String ort, String plz, String sex, String geburtstag, String spitzname) {
         this.name = name;
@@ -81,6 +86,9 @@ public class User {
         this.geburtstag = geburtstag;
         this.spitzname = spitzname;
     }
+
+
+    // Getter and Setter
 
     public int getId() {
         return id;

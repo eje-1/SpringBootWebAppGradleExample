@@ -16,6 +16,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+
+/**Controller ist eine Klasse  Controller, die die Anforderung vom Benutzer behandelt und den Strom (flow) der Applikation kontrolliert.
+ * Das Kommentar  @SpringBootApplication ist so ähnlich wie die Benutzung von @Configuration, @EnableAutoConfiguration und  @ComponentScan mit ihren standardmäßigen Attribute
+ * Deshalb hilft  @SpringBootApplication Ihnen bei der automatischen Konfigurierung vom Spring, und ganz den Projekt automatisch überprüfen (Scan) um die Elemente von Spring  ( Controller, Bean, Service,...) zu finden*/
+
 @EnableAutoConfiguration
 @Component
 @org.springframework.stereotype.Controller
@@ -34,7 +39,11 @@ public class MyController {
     private String errorMessage;
 
 
-    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+    /**Diese funktion sollte aufgerufen werden wenn es ein get request rein kommt "
+    * path = "" <--- der path der methodt
+    * produces = MediaType.Application_JSON_VALUE    <--- wandle das ganze in ein json format*/
+    /**Die Annotation @GetMapping("/")legt fest, dass GET-Requests auf Root von der darauf folgenden Methode (hier also home()) behandelt werden.*/
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET) //path wo wir das meppen mochten
     public String index(Model model) {
 
         model.addAttribute("message", message);
@@ -122,35 +131,24 @@ public class MyController {
     }
 
     @RequestMapping(value = {"/editPerson/update/{id}"}, method = RequestMethod.POST)
-    public String saveEditPerson(Model model, int id, @ModelAttribute("editUser") User user, @ModelAttribute("name") String name, @ModelAttribute("vorname") String vorname, @ModelAttribute("email") String email,
-                                 @ModelAttribute("telefon") String telefon, @ModelAttribute("strasse") String strasse, @ModelAttribute("ort") String ort ,
-                                 @ModelAttribute("plz") String plz, @ModelAttribute("sex") String sex, @ModelAttribute("geburtstag") String geburtstag,
-                                 @ModelAttribute("spitzname") String spitzname) {
+    public String saveEditPerson(Model model, int id, @ModelAttribute("editUser") User user) {
 
         Optional<User> result = userRepository.findById(id);
         User editPerson = result.orElse(null);
-        if(editPerson != null){
-            editPerson.setName(name);
-            editPerson.setVorname(vorname);
-            editPerson.setEmail(email);
-            editPerson.setTelefon(telefon);
-            editPerson.setStrasse(strasse);
-            editPerson.setOrt(ort);
-            editPerson.setPlz(plz);
-            editPerson.setSex(sex);
-            editPerson.setGeburstag(geburtstag);
-            editPerson.setSpitzname(spitzname);
-            userRepository.save(editPerson);
+        if(user != null){
+           userRepository.save(user);
         }
 
         return "redirect:/personList";
 
     }
 
-    @RequestMapping(value = "/personList/suche/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/personList/suche", method = RequestMethod.GET)
     public String viewHomePage(Model model, @Param("keyword") String keyword) {
 
-        model.addAttribute("userSuche", userRepository.findByTitle(keyword));
+        List<User> listUser = service.listAll(keyword);
+        model.addAttribute("user", listUser);
+        model.addAttribute("keyword", keyword);
 
         return "redirect:/personList";
     }

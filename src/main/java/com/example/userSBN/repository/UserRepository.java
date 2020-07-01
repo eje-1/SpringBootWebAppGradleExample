@@ -6,10 +6,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/*CrudRepository Implementiert grundlegende CRUD-Operationen, einschließlich count, delete, deleteById, save, saveAll, findById und findAll.*/
 public interface UserRepository extends CrudRepository<User, Integer> {
 
     List<User> findAll();
-
-    //returns list of Entry objects where String title matches title field
-    List<User> findByTitle(@Param("name") String name);
 }

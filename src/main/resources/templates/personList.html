@@ -16,7 +16,7 @@
 <br />
 <hr />
 
-<form class="suche" th:action="@{/personList/suche/{name}}">
+<form class="suche" th:action="@{/personList/suche}">
     Search: <input type="text" name="keyword" id="keyword" size="30" th:value="${keyword}" required />
     &nbsp;
     <input type="submit" value="Search" />
@@ -57,5 +57,6 @@
     </div>
 </form>
 </body>
+
 <footer class="footerPerson"><p>2020 Ernest Jewczyn</p></footer>
 </html>

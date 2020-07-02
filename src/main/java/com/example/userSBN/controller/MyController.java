@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ import java.util.Optional;
 
 @EnableAutoConfiguration
 @Component
-@org.springframework.stereotype.Controller
+@Controller
 public class MyController {
 
     @Autowired
@@ -149,6 +150,7 @@ public class MyController {
         List<User> listUser = service.listAll(keyword);
         model.addAttribute("user", listUser);
         model.addAttribute("keyword", keyword);
+        System.out.println(keyword);
 
         return "redirect:/personList";
     }

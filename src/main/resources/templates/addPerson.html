@@ -3,52 +3,81 @@
 <head>
     <meta charset="UTF-8" />
     <title>Add Person</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/static/styles.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
 </head>
 <body class="createPerson">
 <header class="header">
-    <h1>Create a Person:</h1>
+    <h1 class="addH1">Create a Person:</h1>
 </header>
-<br>
+<br />
 
 <form th:action="@{/addPerson}" th:object="${newUser}" method="POST">
-    First Name:
-    <input type="text" th:field="*{name}" />
-    <br/>
-    Last Name:
-    <input type="text" th:field="*{vorname}" />
-    <br/>
-    Email:
-    <input type="text" th:field="*{email}" />
-    <br/>
-    Phone:
-    <input type="text" th:field="*{telefon}" />
-    <br/>
-    Strasse:
-    <input type="text" th:field="*{strasse}" />
-    <br/>
-    Place:
-    <input type="text" th:field="*{ort}" />
-    <br/>
-    PLZ:
-    <input type="text" th:field="*{plz}" />
-    <br/>
-    Sex:
-    <input type="text" th:field="*{Sex}" />
-    <br/>
-    Geburtstag:
-    <input type="text" th:field="*{geburtstag}" />
-    <br/>
-    Spitzname:
-    <input type="text" th:field="*{spitzname}" />
-    <br/>
-    <input type="submit" value="Create" />
-</form>
 
+   <div class="container">
+
+       <table class="addPersonTable" border = "1">
+           <tr>
+               <td> <label class="labelLinks">First Name:</label></td>
+               <td> <input class="inputRechts" type="text" th:field="*{name}" /></td>
+           </tr>
+
+           <tr>
+               <td> <label class="labelLinks" for="zwei">Last Name:</label></td>
+               <td> <input class="inputRechts" type="text" th:field="*{vorname}" /></td>
+           </tr>
+
+           <tr>
+               <td> <label class="labelLinks" for="drei">Email:</label></td>
+               <td> <input class="inputRechts"  type="text" th:field="*{email}" /></td>
+           </tr>
+
+           <tr>
+               <td> <label class="labelLinks" for="vier"> Phone:</label></td>
+               <td> <input class="inputRechts" type="text" th:field="*{telefon}" /></td>
+           </tr>
+
+           <tr>
+               <td> <label class="labelLinks" for="funf">Strasse:</label></td>
+               <td> <input class="inputRechts" type="text" th:field="*{strasse}" /></td>
+           </tr>
+
+           <tr>
+               <td> <label class="labelLinks" for="sechs">Place:</label></td>
+               <td> <input class="inputRechts" type="text" th:field="*{ort}" /></td>
+           </tr>
+
+           <tr>
+               <td> <label class="labelLinks" for="sieben">PLZ:</label></td>
+               <td> <input class="inputRechts" type="text" th:field="*{plz}" /></td>
+           </tr>
+
+           <tr>
+               <td> <label class="labelLinks" for="acht">Sex:</label></td>
+               <td> <input class="inputRechts" type="text" th:field="*{Sex}" /></td>
+           </tr>
+
+           <tr>
+               <td> <label class="labelLinks" for="neun">Geburtstag:</label></td>
+               <td> <input class="inputRechts" type="text" th:field="*{geburtstag}" /></td>
+           </tr>
+
+           <tr>
+               <td> <label class="labelLinks" for="zehn">Spitzname:</label></td>
+               <td> <input class="inputRechts" type="text" th:field="*{spitzname}" /></td>
+           </tr>
+
+       </table>
+
+       <br><br>
+    <input type="submit" value="Create" />
+       <br><br>
+
+   </div>
+</form>
 
 <br />
 
 <div th:if="${errorMessage}" th:utext="${errorMessage}" style="color: red; font-style: italic;"></div>
 </body>
-<footer class="footerPerson"><p>2020 Ernest Jewczyn</p></footer>
+<footer class="footer"><p>2020 Ernest Jewczyn</p></footer>
 </html>

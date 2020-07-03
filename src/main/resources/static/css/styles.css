@@ -1,7 +1,7 @@
 /*-------------------------------Index class/*-------------------------------*/
 .index{
 font-family: Arial, Helvetica, sans-serif;
-background-image: url("");
+background-image: url("../css/img/a.jpg");
 }
 
 .headerIndex{
@@ -54,6 +54,7 @@ background-color: white;
 
 .personList{
 font-family: Arial, Helvetica, sans-serif;
+background-image: url("../css/img/a.jpg");
 
 }
 .header{
@@ -63,6 +64,7 @@ padding-bottom: 30px;
 text-decoration: none;
 border-radius: 40px;
 width: 99%;
+
 }
 
 table {
@@ -129,4 +131,17 @@ text-align: center;
 
 .headerEdit{
 
+}
+
+.editPerson{
+background-image: url("../css/img/a.jpg");
+font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*-------------------------------CreatePerson-------------------------------*/
+
+.createPerson{
+background-image: url("../css/img/a.jpg");
+font-family: Arial, Helvetica, sans-serif;
 }

@@ -6,14 +6,15 @@ import com.example.userSBN.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.core.env.Environment;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +53,24 @@ public class MyController {
         return "index";
     }
 
+    private String appMode;
+
+    @Autowired
+    public MyController(Environment environment){
+        appMode = environment.getProperty("app-mode");
+    }
+
+    @RequestMapping("/index2")
+    public String index2(Model model){
+
+        List<User> allUsers = userRepository.findAll(); //get all entries from Entry table into a list
+        model.addAttribute("users", allUsers);//get the contents of list into the Thymeleaf template
+
+        model.addAttribute("mode", appMode);
+
+        return "index2";
+    }
+
     //Go to person List
     @RequestMapping(value = {"/personList"}, method = RequestMethod.GET)
     public String personList(Model model) {
@@ -62,19 +81,16 @@ public class MyController {
         return "personList";
     }
 
-/*
-    @RequestMapping(value = { "/addPerson" }, method = RequestMethod.GET)
-    public String showAddPersonPage(@ModelAttribute("name") String name, @ModelAttribute("vorname") String vorname, @ModelAttribute("email") String email,
-                                    @ModelAttribute("telefon") String telefon, @ModelAttribute("strasse") String strasse, @ModelAttribute("ort") String ort ,
-                                    @ModelAttribute("plz") String plz, @ModelAttribute("sex") String sex, @ModelAttribute("geburtstag") String geburtstag,
-                                    @ModelAttribute("spitzname") String spitzname) {
+    @RequestMapping(value = "/personList/suche", method = RequestMethod.GET)
+    public String viewHomePage(Model model, @Param("keyword") String keyword) {
 
-        User person = new User(name, vorname, email, telefon, strasse, ort, plz, sex, geburtstag, spitzname);
-        userRepository.save(person);
+        List<User> listUser = service.listAll(keyword);
+        model.addAttribute("user", listUser);
+        model.addAttribute("keyword", keyword);
+        System.out.println(keyword);
 
-        return "addPerson";
+        return "redirect:/personList";
     }
-*/
 
     //addPerson show page
     @RequestMapping(value = {"/addPerson"}, method = RequestMethod.GET)
@@ -143,18 +159,5 @@ public class MyController {
         return "redirect:/personList";
 
     }
-
-    @RequestMapping(value = "/personList/suche", method = RequestMethod.GET)
-    public String viewHomePage(Model model, @Param("keyword") String keyword) {
-
-        List<User> listUser = service.listAll(keyword);
-        model.addAttribute("user", listUser);
-        model.addAttribute("keyword", keyword);
-        System.out.println(keyword);
-
-        return "redirect:/personList";
-    }
-
-
 
 }

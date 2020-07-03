@@ -85,7 +85,7 @@ table th, table td {
 }
 
 tr:nth-child(even) {
-  background-color: gray;
+  background-color: #eef5fd;
 }
 
 .search{

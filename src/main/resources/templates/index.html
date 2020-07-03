@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <title>Welcome</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 </head>
 <body class="index">
 <div class="headerIndex">
@@ -13,14 +11,6 @@
     <h2 class="indexH2" th:utext="${message}">..!..</h2>
     <button type="button" class="btn btn-primary"><a th:href="@{/personList}">User List</a></button>
 </div>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../css/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-
 </body>
 <footer class="footer"><p>2020 Ernest Jewczyn</p></footer>
 </html>

@@ -80,12 +80,12 @@ color: white;
 
 table th, table td {
     padding: 20px;
-    border: 1px solid #ffffff;
+    border: 1px solid #454d55;
     text-align: left;
 }
 
 tr:nth-child(even) {
-  background-color: #eef5fd;
+  background-color: #ffffff;
 }
 
 .search{

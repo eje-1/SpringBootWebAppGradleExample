@@ -60,16 +60,6 @@ public class MyController {
         appMode = environment.getProperty("app-mode");
     }
 
-    @RequestMapping("/index2")
-    public String index2(Model model){
-
-        List<User> allUsers = userRepository.findAll(); //get all entries from Entry table into a list
-        model.addAttribute("users", allUsers);//get the contents of list into the Thymeleaf template
-
-        model.addAttribute("mode", appMode);
-
-        return "index2";
-    }
 
     //Go to person List
     @RequestMapping(value = {"/personList"}, method = RequestMethod.GET)
@@ -85,11 +75,11 @@ public class MyController {
     public String viewHomePage(Model model, @Param("keyword") String keyword) {
 
         List<User> listUser = service.listAll(keyword);
-        model.addAttribute("user", listUser);
+        model.addAttribute("users", listUser);
         model.addAttribute("keyword", keyword);
         System.out.println(keyword);
 
-        return "redirect:/personList";
+        return "index2";
     }
 
     //addPerson show page
@@ -158,6 +148,88 @@ public class MyController {
 
         return "redirect:/personList";
 
+    }
+
+
+    /**Bootstrap */
+
+    @RequestMapping("/index2")
+    public String index2(Model model){
+
+        List<User> allUsers = userRepository.findAll(); //get all entries from Entry table into a list
+        model.addAttribute("users", allUsers);//get the contents of list into the Thymeleaf template
+
+        model.addAttribute("mode", appMode);
+
+        return "index2";
+    }
+
+    //delete an user
+    @RequestMapping(value="/delete2/{id}", method = RequestMethod.GET)
+    public String deleteMethod2(@PathVariable(value = "id") int userID){
+
+        userRepository.deleteById(userID);
+        return "redirect:/index2";
+    }
+
+    // editUser get Id
+    @RequestMapping(value = { "/editPerson2/update/{id}" }, method = RequestMethod.GET)
+    public String showEditPersonPage2(@PathVariable(name = "id") int id, Model model)  {
+
+        Optional<User> result = userRepository.findById(id);
+        model.addAttribute("editUser2", result);
+
+
+        return "editPerson2";
+    }
+
+    @RequestMapping(value = {"/editPerson2/update/{id}"}, method = RequestMethod.POST)
+    public String saveEditPerson2(Model model, int id, @ModelAttribute("editUser2") User user) {
+
+        Optional<User> result = userRepository.findById(id);
+        User editPerson = result.orElse(null);
+        if(user != null){
+            userRepository.save(user);
+        }
+
+        return "redirect:/index2";
+
+    }
+
+    //addPerson show page
+    @RequestMapping(value = {"/addPerson2"}, method = RequestMethod.GET)
+    public String showAddPerson2(Model model) {
+
+        User newUser = new User();
+        model.addAttribute("newUser2", newUser);
+
+        return "addPerson2";
+    }
+
+    //add user to database mvc
+    @RequestMapping(value = {"/addPerson2"}, method = RequestMethod.POST)
+    public String saveAddPerso2(Model model, @ModelAttribute("newUser2") User user) {
+
+        String firstName = user.getName();
+        String lastName = user.getVorname();
+        String mail = user.getEmail();
+        String telefon = user.getTelefon();
+        String street = user.getStrasse();
+        String place = user.getOrt();
+        String plz = user.getPlz();
+        String sex = user.getSex();
+        String birthday = user.getGeburtstag();
+        String nick = user.getSpitzname();
+
+        if (firstName != null && firstName.length() > 0 //
+                && lastName != null && lastName.length() > 0) {
+            User newPerson = new User(firstName, lastName, mail, telefon, street, place, plz, sex, birthday, nick);
+            System.out.println("Add");
+
+            userRepository.save(newPerson);
+
+        }
+        return "redirect:/index2";
     }
 
 }

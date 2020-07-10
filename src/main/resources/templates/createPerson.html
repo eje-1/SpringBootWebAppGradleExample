@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Add Person</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index2">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="addPerson2">Create Person</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</head>
+<body>
+<form th:action="@{/addPerson2}" th:object="${newUser2}" method="POST">
+
+
+    <div class="jumbotron jumbotron">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-4">Create Person</h1>
+                <p class="lead">Create new Person...</p>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <table class="table table-bordered table-dark">
+                <tr align="center">
+                    <td> <label>First Name:</label></td>
+                    <td> <input type="text" th:field="*{name}" /></td>
+                </tr>
+
+                <tr align="center">
+                    <td> <label>Last Name:</label></td>
+                    <td> <input type="text" th:field="*{vorname}" /></td>
+                </tr>
+
+                <tr align="center">
+                    <td> <label>Email:</label></td>
+                    <td> <input type="text" th:field="*{email}" /></td>
+                </tr>
+
+                <tr align="center">
+                    <td> <label>Phone:</label></td>
+                    <td> <input type="text" th:field="*{telefon}" /></td>
+                </tr>
+
+                <tr align="center">
+                    <td> <label>Street:</label></td>
+                    <td> <input type="text" th:field="*{strasse}" /></td>
+                </tr>
+
+                <tr align="center">
+                    <td> <label>Place:</label></td>
+                    <td> <input type="text" th:field="*{ort}" /></td>
+                </tr>
+
+                <tr align="center">
+                    <td> <label>PLZ:</label></td>
+                    <td> <input type="text" th:field="*{plz}" /></td>
+                </tr>
+
+                <tr align="center">
+                    <td><label>Sex:</label></td>
+                    <td><input type="radio" th:field="*{sex}" value="Male">Male
+                    <input type="radio" th:field="*{sex}" value="Female">Female</td>
+
+                </tr>
+
+                <tr align="center">
+                    <td> <label>Geburtstag:</label></td>
+                    <td> <input type="text" th:field="*{geburtstag}" placeholder="(dd/MM/yyyy)"/></td>
+                </tr>
+
+                <tr align="center">
+                    <td> <label>Spitzname:</label></td>
+                    <td> <input type="text" th:field="*{spitzname}"/></td>
+                </tr>
+
+            </table>
+
+            <br><br>
+            <input type="submit" value="Create" class="btn btn-primary btn-lg btn-block" />
+            <br><br>
+
+            <div th:if="${errorMessage}" th:utext="${errorMessage}" style="color: red; font-style: italic;"></div>
+
+            <!-- Bootstrap core JavaScript
+            ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="../css/js/bootstrap.js" th:href="@{../css/js/bootstrap.js}"></script>
+            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        </div>
+    </div> <!-- /container -->
+</form>
+</body>
+
+<div th:if="${errorMessage}" th:utext="${errorMessage}" style="color: red; font-style: italic;"></div>
+<!--Footer-->
+<footer class="page-footer font-small blue">
+
+    <!-- Copyright-->
+    <div class="footer-copyright text-center py3">© 2020 Copyright: EJE</div>
+
+</footer>
+
+</html>

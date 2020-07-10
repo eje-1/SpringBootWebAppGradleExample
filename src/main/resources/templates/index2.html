@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Index2</title>
     <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link active" href="http://localhost:8080/index2">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/addPerson2">Create Person</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" th:action="@{/personList/suche}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" id="keyword" th:value="${keyword}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
 </head>
 <body>
-
 <div class="jumbotron jumbotron">
     <div class="row">
         <div class="col">
@@ -16,11 +38,12 @@
             <p class="lead">People who are in the database...</p>
         </div>
         <div class="col col-lg-2">
-            <br><br>
-            <button type="button" class="btn btn-primary btn-lg btn-block">Create Person</button>
+            <br />
+            <br />
+            <a class="btn btn-primary btn-lg btn-block" href="addPerson2" role="button">Create Person</a>
         </div>
     </div>
-    <br>
+    <br />
     <div class="container-fluid">
         <table class="table table-bordered table-dark">
             <tr align="center">
@@ -47,28 +70,24 @@
                 <td th:utext="${user.sex}">...</td>
                 <td th:utext="${user.geburtstag}">...</td>
                 <td th:utext="${user.spitzname}">...</td>
-                <td align="center"><a th:href="@{/editPerson/update/{id}(id=${user.id})}">Edit</a> | <a
-                        th:href="@{/delete/{id}(id=${user.id})}" onclick="return confirm('Are you sure?')">Delete</a>
-                </td>
+                <td align="center"><a th:href="@{/editPerson2/update/{id}(id=${user.id})}">Edit</a> | <a th:href="@{/delete2/{id}(id=${user.id})}" onclick="return confirm('Are you sure?')">Delete</a></td>
             </tr>
         </table>
 
         <!-- Bootstrap core JavaScript
-        ================================================== -->
+================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="../css/js/bootstrap.js" th:href="@{../css/js/bootstrap.js}"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     </div>
-</div> <!-- /container -->
+</div>
+<!-- /container -->
 </body>
 
 <!--Footer-->
 <footer class="page-footer font-small blue">
-
     <!-- Copyright-->
     <div class="footer-copyright text-center py3">© 2020 Copyright: EJE</div>
-
 </footer>
-
 </html>

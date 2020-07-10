@@ -12,7 +12,7 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    SearchRepository repo;
+    UserRepository repo;
 
 
         public List<User> listAll(String keyword){

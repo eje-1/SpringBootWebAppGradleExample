@@ -6,31 +6,38 @@
     <title>Database List</title>
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <!--My Css -->
+    <link href="../static/css/styles.css" rel="stylesheet" th:href="@{/css/styles.css}" />
 
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="../css/img/WebMen_exakt.png" width="150" height="32"  class="d-inline-block align-top" alt="" loading="lazy"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="../css/img/WebMen_exakt.png" width="150" height="32" class="d-inline-block align-top" alt="" loading="lazy" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link active" href="http://localhost:8080/index2">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/createPerson">Create Person</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0" th:action="@{/personList/suche}">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" id="keyword" th:value="${keyword}">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/">Index</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link active" href="http://localhost:8080/index2">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/createPerson">Create Person</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" th:action="@{/personList/suche}">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" id="keyword" th:value="${keyword}" />
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
 </head>
-<body>
+<body class="indexBody">
 <div class="jumbotron jumbotron">
     <div class="row">
         <div class="col">
@@ -43,7 +50,7 @@
             <a class="btn btn-primary btn-lg btn-block" href="createPerson" role="button">Create Person</a>
         </div>
     </div>
-    <hr class="my-4">
+    <hr class="my-4" />
     <div class="container-fluid">
         <table class="table table-bordered table-dark">
             <tr align="center">
@@ -70,8 +77,10 @@
                 <td th:utext="${user.sex}">...</td>
                 <td th:utext="${user.spitzname}">...</td>
                 <td th:utext="${user.birthday}">...</td>
-                <td align="center"><a th:href="@{/editPerson/update/{id}(id=${user.id})}"><button type="button" class="btn btn-info">Edit</button></a> |
-                    <a th:href="@{/delete/{id}(id=${user.id})}" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                <td align="center">
+                    <a th:href="@{/editPerson/update/{id}(id=${user.id})}"><button type="button" class="btn btn-info">Edit</button></a> |
+                    <a th:href="@{/delete/{id}(id=${user.id})}" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a>
+                </td>
             </tr>
         </table>
 
@@ -83,16 +92,15 @@
 
         <!--Show 10 entry-->
 
-
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     </div>
 </div>
 <!-- /container -->
-</body>
 
 <!--Footer-->
 <footer class="page-footer font-small blue">
     <!-- Copyright-->
     <div class="footer-copyright text-center py3">© 2020 Copyright: EJE</div>
 </footer>
+</body>
 </html>

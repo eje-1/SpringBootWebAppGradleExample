@@ -5,9 +5,11 @@
     <title>Welcome</title>
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <!--My Css -->
+    <link href="../static/css/styles.css" rel="stylesheet" th:href="@{/css/styles.css}" />
 
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="../css/img/WebMen_exakt.png" width="150" height="32" class="d-inline-block align-top" alt="" loading="lazy"></a>
+        <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="../css/img/WebMen_exakt.png" width="150" height="32" class="d-inline-block align-top" alt="" loading="lazy" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,7 +17,11 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link active" href="http://localhost:8080/index2">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link active" href="http://localhost:8080/index2">Index <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/index2">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost:8080/createPerson">Create Person</a>
@@ -24,12 +30,13 @@
         </div>
     </nav>
 </head>
+<body class="indexBody">
 <div class="jumbotron jumbotron">
     <div class="row">
         <div class="col">
             <h1 class="display-4">Spring Boot project</h1>
             <p class="lead" th:utext="${message}">..!..</p>
-            <hr class="my-4">
+            <hr class="my-4" />
             <p>This is my first project of Spring Boot pleace klick on "Learn more" button for more info.</p>
             <p class="lead">
                 <a class="btn btn-primary btn-lg" href="index2" role="button">Learn more</a>
@@ -42,4 +49,5 @@
         <div class="footer-copyright text-center py3">© 2020 Copyright: EJE</div>
     </footer>
 </div>
+</body>
 </html>

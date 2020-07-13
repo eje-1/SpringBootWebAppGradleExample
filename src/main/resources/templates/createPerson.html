@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>Add Person</title>
+    <title>Create User</title>
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="../css/img/WebMen_exakt.png" width="150" height="32"  class="d-inline-block align-top" alt="" loading="lazy"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,7 +19,7 @@
                     <a class="nav-link" href="index2">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="addPerson2">Create Person</a>
+                    <a class="nav-link" href="createPerson">Create Person</a>
                 </li>
             </ul>
         </div>
@@ -27,7 +27,7 @@
 
 </head>
 <body>
-<form th:action="@{/addPerson2}" th:object="${newUser2}" method="POST">
+<form th:action="@{/createPerson}" th:object="${newUser}" method="POST">
 
 
     <div class="jumbotron jumbotron">
@@ -38,6 +38,7 @@
             </div>
         </div>
         <br>
+        <hr class="my-4">
         <div class="container">
             <table class="table table-bordered table-dark">
                 <tr align="center">
@@ -77,25 +78,25 @@
 
                 <tr align="center">
                     <td><label>Sex:</label></td>
-                    <td><input type="radio" th:field="*{sex}" value="Male">Male
+                    <td><input type="radio" th:field="*{sex}" value="Male">Male &nbsp;
                     <input type="radio" th:field="*{sex}" value="Female">Female</td>
 
                 </tr>
 
                 <tr align="center">
-                    <td> <label>Geburtstag:</label></td>
-                    <td> <input type="text" th:field="*{geburtstag}" placeholder="(dd/MM/yyyy)"/></td>
+                    <td> <label>Nickname:</label></td>
+                    <td> <input type="text" th:field="*{spitzname}"/></td>
                 </tr>
 
                 <tr align="center">
-                    <td> <label>Spitzname:</label></td>
-                    <td> <input type="text" th:field="*{spitzname}"/></td>
+                    <td> <label>Birthday:</label></td>
+                    <td> <input type="text" th:field="*{birthday}" placeholder="(dd/MM/yyyy)"/></td>
                 </tr>
 
             </table>
 
             <br><br>
-            <input type="submit" value="Create" class="btn btn-primary btn-lg btn-block" />
+            <input type="submit" value="Create" class="btn btn-success btn-lg btn-block" />
             <br><br>
 
             <div th:if="${errorMessage}" th:utext="${errorMessage}" style="color: red; font-style: italic;"></div>

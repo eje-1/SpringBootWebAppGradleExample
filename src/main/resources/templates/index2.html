@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Index2</title>
+    <title>Database List</title>
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
 
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="../css/img/WebMen_exakt.png" width="150" height="32"  class="d-inline-block align-top" alt="" loading="lazy"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,7 +19,7 @@
                 <a class="nav-link active" href="http://localhost:8080/index2">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/addPerson2">Create Person</a>
+                <a class="nav-link" href="http://localhost:8080/createPerson">Create Person</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" th:action="@{/personList/suche}">
@@ -40,10 +40,10 @@
         <div class="col col-lg-2">
             <br />
             <br />
-            <a class="btn btn-primary btn-lg btn-block" href="addPerson2" role="button">Create Person</a>
+            <a class="btn btn-primary btn-lg btn-block" href="createPerson" role="button">Create Person</a>
         </div>
     </div>
-    <br />
+    <hr class="my-4">
     <div class="container-fluid">
         <table class="table table-bordered table-dark">
             <tr align="center">
@@ -55,8 +55,8 @@
                 <th scope="col">Place</th>
                 <th scope="col">Postcode</th>
                 <th scope="col">Sex</th>
-                <th scope="col">Date of birth</th>
                 <th scope="col">Nickname</th>
+                <th scope="col">Birthday</th>
                 <th scope="col">Actions on Row</th>
             </tr>
             <tr th:each="user : ${users}">
@@ -68,9 +68,10 @@
                 <td th:utext="${user.ort}">...</td>
                 <td th:utext="${user.plz}">...</td>
                 <td th:utext="${user.sex}">...</td>
-                <td th:utext="${user.geburtstag}">...</td>
                 <td th:utext="${user.spitzname}">...</td>
-                <td align="center"><a th:href="@{/editPerson2/update/{id}(id=${user.id})}">Edit</a> | <a th:href="@{/delete2/{id}(id=${user.id})}" onclick="return confirm('Are you sure?')">Delete</a></td>
+                <td th:utext="${user.birthday}">...</td>
+                <td align="center"><a th:href="@{/editPerson/update/{id}(id=${user.id})}"><button type="button" class="btn btn-info">Edit</button></a> |
+                    <a th:href="@{/delete/{id}(id=${user.id})}" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a></td>
             </tr>
         </table>
 
@@ -79,6 +80,10 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="../css/js/bootstrap.js" th:href="@{../css/js/bootstrap.js}"></script>
+
+        <!--Show 10 entry-->
+
+
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     </div>
 </div>

@@ -58,13 +58,12 @@ public class User {
 
 
     @NotNull
-    @Column(name = "geburtstag")
-    private String geburtstag;
-
-
-    @NotNull
     @Column(name = "spitzname")
     private String spitzname;
+
+    @NotNull
+    @Column(name = "birthday")
+    private String birthday;
 
     // Einfache konstruktor
 
@@ -74,7 +73,7 @@ public class User {
 
     // Konstruktor
 
-    public User(String name, String vorname, String email, String telefon, String strasse, String ort, String plz, String sex, String geburtstag, String spitzname) {
+    public User(String name, String vorname, String email, String telefon, String strasse, String ort, String plz, String sex, String spitzname, String birthday) {
         this.name = name;
         this.vorname = vorname;
         this.email = email;
@@ -83,8 +82,8 @@ public class User {
         this.ort = ort;
         this.plz = plz;
         this.sex = sex;
-        this.geburtstag = geburtstag;
         this.spitzname = spitzname;
+        this.birthday = birthday;
     }
 
 
@@ -162,19 +161,19 @@ public class User {
         this.sex = sex;
     }
 
-    public String getGeburtstag() {
-        return geburtstag;
-    }
-
-    public void setGeburstag(String geburtstag) {
-        this.geburtstag = geburtstag;
-    }
-
     public String getSpitzname() {
         return spitzname;
     }
 
     public void setSpitzname(String spitzname) {
         this.spitzname = spitzname;
+    }
+
+    public String getBirthday(){
+        return birthday;
+    }
+
+    public void setBirthday(String birthday){
+        this.birthday = birthday;
     }
 }

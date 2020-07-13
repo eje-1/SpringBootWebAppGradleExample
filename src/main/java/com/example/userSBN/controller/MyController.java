@@ -60,97 +60,6 @@ public class MyController {
         appMode = environment.getProperty("app-mode");
     }
 
-
-    //Go to person List
-    @RequestMapping(value = {"/personList"}, method = RequestMethod.GET)
-    public String personList(Model model) {
-
-        List<User> allUsers = userRepository.findAll(); //get all entries from Entry table into a list
-        model.addAttribute("users", allUsers);//get the contents of list into the Thymeleaf template
-
-        return "personList";
-    }
-
-    @RequestMapping(value = "/personList/suche", method = RequestMethod.GET)
-    public String viewHomePage(Model model, @Param("keyword") String keyword) {
-
-        List<User> listUser = service.listAll(keyword);
-        model.addAttribute("users", listUser);
-        model.addAttribute("keyword", keyword);
-        System.out.println(keyword);
-
-        return "index2";
-    }
-
-    //addPerson show page
-    @RequestMapping(value = {"/addPerson"}, method = RequestMethod.GET)
-    public String showAddPerson(Model model) {
-
-        User newUser = new User();
-        model.addAttribute("newUser", newUser);
-
-        return "addPerson";
-    }
-
-    //add user to database mvc
-    @RequestMapping(value = {"/addPerson"}, method = RequestMethod.POST)
-    public String saveAddPerson(Model model, @ModelAttribute("newUser") User user) {
-
-        String firstName = user.getName();
-        String lastName = user.getVorname();
-        String mail = user.getEmail();
-        String telefon = user.getTelefon();
-        String street = user.getStrasse();
-        String place = user.getOrt();
-        String plz = user.getPlz();
-        String sex = user.getSex();
-        String birthday = user.getGeburtstag();
-        String nick = user.getSpitzname();
-
-        if (firstName != null && firstName.length() > 0 //
-                && lastName != null && lastName.length() > 0) {
-            User newPerson = new User(firstName, lastName, mail, telefon, street, place, plz, sex, birthday, nick);
-            System.out.println("Add");
-
-            userRepository.save(newPerson);
-
-        }
-        return "redirect:/personList";
-    }
-
-    //delete an user
-    @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
-    public String deleteMethod(@PathVariable(value = "id") int userID){
-
-        userRepository.deleteById(userID);
-        return "redirect:/personList";
-    }
-
-    // editUser get Id
-    @RequestMapping(value = { "/editPerson/update/{id}" }, method = RequestMethod.GET)
-    public String showEditPersonPage(@PathVariable(name = "id") int id, Model model)  {
-
-        Optional<User> result = userRepository.findById(id);
-        model.addAttribute("editUser", result);
-
-
-        return "editPerson";
-    }
-
-    @RequestMapping(value = {"/editPerson/update/{id}"}, method = RequestMethod.POST)
-    public String saveEditPerson(Model model, int id, @ModelAttribute("editUser") User user) {
-
-        Optional<User> result = userRepository.findById(id);
-        User editPerson = result.orElse(null);
-        if(user != null){
-           userRepository.save(user);
-        }
-
-        return "redirect:/personList";
-
-    }
-
-
     /**Bootstrap */
 
     @RequestMapping("/index2")
@@ -164,8 +73,21 @@ public class MyController {
         return "index2";
     }
 
+
+    @RequestMapping(value = "/personList/suche", method = RequestMethod.GET)
+    public String viewHomePage(Model model, @Param("keyword") String keyword) {
+
+        List<User> listUser = service.listAll(keyword);
+        model.addAttribute("users", listUser);
+        model.addAttribute("keyword", keyword);
+        System.out.println(keyword);
+
+        return "index2";
+    }
+
+
     //delete an user
-    @RequestMapping(value="/delete2/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
     public String deleteMethod2(@PathVariable(value = "id") int userID){
 
         userRepository.deleteById(userID);
@@ -173,18 +95,18 @@ public class MyController {
     }
 
     // editUser get Id
-    @RequestMapping(value = { "/editPerson2/update/{id}" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/editPerson/update/{id}" }, method = RequestMethod.GET)
     public String showEditPersonPage2(@PathVariable(name = "id") int id, Model model)  {
 
         Optional<User> result = userRepository.findById(id);
-        model.addAttribute("editUser2", result);
+        model.addAttribute("editUser", result);
 
 
-        return "editPerson2";
+        return "editPerson";
     }
 
-    @RequestMapping(value = {"/editPerson2/update/{id}"}, method = RequestMethod.POST)
-    public String saveEditPerson2(Model model, int id, @ModelAttribute("editUser2") User user) {
+    @RequestMapping(value = {"/editPerson/update/{id}"}, method = RequestMethod.POST)
+    public String saveEditPerson2(Model model, int id, @ModelAttribute("editUser") User user) {
 
         Optional<User> result = userRepository.findById(id);
         User editPerson = result.orElse(null);
@@ -197,18 +119,18 @@ public class MyController {
     }
 
     //addPerson show page
-    @RequestMapping(value = {"/addPerson2"}, method = RequestMethod.GET)
-    public String showAddPerson2(Model model) {
+    @RequestMapping(value = {"/createPerson"}, method = RequestMethod.GET)
+    public String showAddPerson(Model model) {
 
         User newUser = new User();
-        model.addAttribute("newUser2", newUser);
+        model.addAttribute("newUser", newUser);
 
-        return "addPerson2";
+        return "createPerson";
     }
 
     //add user to database mvc
-    @RequestMapping(value = {"/addPerson2"}, method = RequestMethod.POST)
-    public String saveAddPerso2(Model model, @ModelAttribute("newUser2") User user) {
+    @RequestMapping(value = {"/createPerson"}, method = RequestMethod.POST)
+    public String saveAddPerson(Model model, @ModelAttribute("newUser") User user) {
 
         String firstName = user.getName();
         String lastName = user.getVorname();
@@ -218,12 +140,12 @@ public class MyController {
         String place = user.getOrt();
         String plz = user.getPlz();
         String sex = user.getSex();
-        String birthday = user.getGeburtstag();
         String nick = user.getSpitzname();
+        String birthday = user.getBirthday();
 
         if (firstName != null && firstName.length() > 0 //
                 && lastName != null && lastName.length() > 0) {
-            User newPerson = new User(firstName, lastName, mail, telefon, street, place, plz, sex, birthday, nick);
+            User newPerson = new User(firstName, lastName, mail, telefon, street, place, plz, sex, nick, birthday);
             System.out.println("Add");
 
             userRepository.save(newPerson);

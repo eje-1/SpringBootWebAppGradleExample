@@ -14,6 +14,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     List<User> findByName(String name);
 
-    @Query(value = "SELECT u FROM User u WHERE u.name = :keyword or u.vorname = :keyword or u.email = :keyword")
+    @Query(value = "SELECT u FROM User u WHERE u.name = :keyword or u.vorname = :keyword or u.email = :keyword or u.telefon = :keyword or u.strasse = :keyword or u.ort = :keyword or u.plz = :keyword or u.sex = :keyword or u.spitzname = :keyword or u.birthday = :keyword")
     public List<User> search(@Param("keyword") String keyword);
 }

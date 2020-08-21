@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Database List</title>
     <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" /> <link href="../static/css/mdb.min.css" rel="stylesheet" th:href="@{/css/mdb.min.css}" />
     <!--My Css -->
     <link href="../static/css/styles.css" rel="stylesheet" th:href="@{/css/styles.css}" />
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="../css/fonts/font-awesome.min.css">
+    <!-- MDBootstrap Datatables  -->
+    <link href="../css/addons/datatables.min.css" rel="stylesheet">
 
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
         <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="../css/img/WebMen_exakt.png" width="150" height="32" class="d-inline-block align-top" alt="" loading="lazy" /></a>
@@ -52,20 +56,23 @@
     </div>
     <hr class="my-4" />
     <div class="container-fluid">
-        <table class="table table-bordered table-dark">
-            <tr align="center">
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">eMail</th>
-                <th scope="col">Number</th>
-                <th scope="col">Address</th>
-                <th scope="col">Place</th>
-                <th scope="col">Postcode</th>
-                <th scope="col">Sex</th>
-                <th scope="col">Nickname</th>
-                <th scope="col">Birthday</th>
-                <th scope="col">Actions on Row</th>
-            </tr>
+
+        <table id="dtBasicExample" class="table table-bordered table-dark" >
+            <thead>
+                <tr align="center">
+                    <th scope="col" >First Name &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th scope="col">Last Name &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th scope="col">eMail &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th scope="col">Number &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th scope="col">Address &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th scope="col">Place &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th scope="col">Postcode &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th scope="col">Sex &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th scope="col">Nickname &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th scope="col">Birthday &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th scope="col">Actions on Row</th>
+                </tr>
+            </thead>
             <tr th:each="user : ${users}">
                 <td th:utext="${user.name}">...</td>
                 <td th:utext="${user.vorname}">...</td>
@@ -88,11 +95,12 @@
 ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="../css/js/bootstrap.js" th:href="@{../css/js/bootstrap.js}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="../css/js/bootstrap.min.js" th:href="@{../css/js/bootstrap.min.js}"></script>
+        <script src="../css/js/my.js" th:href="@{../css/js/my.js}"></script>
+        <!-- MDBootstrap Datatables  -->
+        <script type="text/javascript" src="../css/addons/datatables.min.js" th:href="@{../css/addons/datatables.min.js}"></script>
 
-        <!--Show 10 entry-->
-
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     </div>
 </div>
 <!-- /container -->

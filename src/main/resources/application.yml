@@ -1,0 +1,7 @@
+spring:
+  liquibase:
+    changeLog: "classpath:db/migration/my-master-change-log.json"
+    datasource:
+      url: jdbc:postgresql://localhost:5432/simpledb
+      username: ernest
+      password: admin123

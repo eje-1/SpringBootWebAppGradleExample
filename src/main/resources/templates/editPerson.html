@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Edit User</title>
     <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" /> <link href="../static/css/mdb.min.css" rel="stylesheet" th:href="@{/css/mdb.min.css}" />
     <!--My Css -->
     <link href="../static/css/styles.css" rel="stylesheet" th:href="@{/css/styles.css}" />
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="../css/fonts/font-awesome.min.css">
+    <!-- MDBootstrap Datatables  -->
+    <link href="../css/addons/datatables.min.css" rel="stylesheet">
 
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="../css/img/WebMen_exakt.png" width="150" height="32" class="d-inline-block align-top" alt="" loading="lazy" /></a>
+        <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="http://localhost:8080/css/img/WebMen_exakt.png" width="150" height="32" class="d-inline-block align-top" alt="" loading="lazy" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,7 +36,6 @@
 </head>
 <body class="indexBody">
 <form th:action="@{/editPerson/update/{id}}" th:object="${editUser}" method="POST">
-    <input hidden type="text" th:field="*{id}" />
 
     <div class="jumbotron jumbotron">
         <div class="row">
@@ -50,6 +53,11 @@
         <hr class="my-4" />
         <div class="container">
             <table class="table table-bordered table-dark">
+                <tr align="center">
+                    <td><label>ID:</label></td>
+                    <td><input readonly type="text" th:field="*{id}" /></td>
+                </tr>
+
                 <tr align="center">
                     <td><label>First Name:</label></td>
                     <td><input type="text" th:field="*{name}" /></td>
@@ -109,8 +117,7 @@
 
             <div th:if="${errorMessage}" th:utext="${errorMessage}" style="color: red; font-style: italic;"></div>
 
-            <!-- Bootstrap core JavaScript
-================================================== -->
+            <!-- Bootstrap core JavaScript-->
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <script src="../css/js/bootstrap.js" th:href="@{../css/js/bootstrap.js}"></script>

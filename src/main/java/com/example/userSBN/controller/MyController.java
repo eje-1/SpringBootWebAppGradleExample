@@ -34,6 +34,7 @@ public class MyController {
     @Autowired
     private UserService service;
 
+    // Welcome message first page this messeage is application propeties
     @Value("${welcome.message}")
     private String message;
 
@@ -62,7 +63,7 @@ public class MyController {
 
     /**Bootstrap */
 
-    @RequestMapping("/index2")
+    @RequestMapping(value = "/index2", method = RequestMethod.GET)
     public String index2(Model model){
 
         List<User> allUsers = userRepository.findAll(); //get all entries from Entry table into a list
@@ -105,6 +106,7 @@ public class MyController {
         return "editPerson";
     }
 
+    // edit user save method
     @RequestMapping(value = {"/editPerson/update/{id}"}, method = RequestMethod.POST)
     public String saveEditPerson2(Model model, int id, @ModelAttribute("editUser") User user) {
 

@@ -10,10 +10,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Optional;
 
 @EnableAutoConfiguration
 @Component
@@ -74,6 +76,38 @@ public class FaecherController {
             faecherRepository.save(newFaecher);
         }
         return "redirect:/faecherIndex";
+    }
+
+    //Edit fach get id
+    @RequestMapping(value = {"/editFaecher/update/{id}"}, method = RequestMethod.GET)
+    public String showEditFachPage(@PathVariable(name = "id") int id, Model model){
+
+        Optional<Faecher> result = faecherRepository.findById(id);
+        model.addAttribute("editFach", result);
+
+        return "editFaecher";
+    }
+
+    //Edit fach save method
+    @RequestMapping(value = {"/editFaecher/update/{id}"}, method = RequestMethod.POST)
+    public String saveEditFach(Model model, int id, @ModelAttribute("editFach") Faecher faecher){
+
+        Optional<Faecher> result = faecherRepository.findById(id);
+        Faecher editFach = result.orElse(null);
+        if (faecher != null){
+            faecherRepository.save(faecher);
+        }
+        return "redirect:/faecherIndex";
+    }
+
+    //Delete method
+    @RequestMapping(value = {"/deleteFach/{id}"}, method = RequestMethod.GET)
+    public String deleteFach(@PathVariable(value = "id") int fachID){
+
+        faecherRepository.deleteById(fachID); // repository delete by id
+
+        return "redirect:/faecherIndex";
+
     }
 
 

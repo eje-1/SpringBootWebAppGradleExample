@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Database List</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" /> <link href="../static/css/mdb.min.css" rel="stylesheet" th:href="@{/css/mdb.min.css}" />
+    <!--My Css -->
+    <link href="../static/css/styles.css" rel="stylesheet" th:href="@{/css/styles.css}" />
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="../css/fonts/font-awesome.min.css">
+    <!-- MDBootstrap Datatables  -->
+    <link href="../css/addons/datatables.min.css" rel="stylesheet">
+
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="../css/img/WebMen_exakt.png" width="150" height="32" class="d-inline-block align-top" alt="" loading="lazy" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/">Index</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="http://localhost:8080/index2">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/createPerson">Create Person</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link active" href="http://localhost:8080/faecherIndex">Index Fächer <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/addFaecher">Create Fächer</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</head>
+<body class="indexBody">
+<div class="jumbotron jumbotron">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4">Fäecher</h1>
+            <p class="lead">School</p>
+        </div>
+        <div class="col col-lg-2">
+            <br />
+            <br />
+            <a class="btn btn-primary btn-lg btn-block" href="/createFaecher" role="button">Create Fächer</a> <!-- Create Fächer  -->
+        </div>
+    </div>
+    <hr class="my-4" />
+    <div class="container-fluid">
+
+        <table id="dtBasicExample" class="table table-bordered table-dark" >
+            <thead>
+            <tr align="center">
+                <th scope="col">Name &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th scope="col">Abkürzung &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th scope="col">Stufe &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th scope="col">Actions on Row</th>
+            </tr>
+            </thead>
+            <tr th:each="faecher : ${faecher}">
+                <td th:utext="${faecher.name}">...</td>
+                <td th:utext="${faecher.abkuerzung}">...</td>
+                <td th:utext="${faecher.stufe}">...</td>
+            </tr>
+        </table>
+
+        <!-- Bootstrap core JavaScript
+================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="../css/js/bootstrap.min.js" th:href="@{../css/js/bootstrap.min.js}"></script>
+        <script src="../css/js/my.js" th:href="@{../css/js/my.js}"></script>
+        <!-- MDBootstrap Datatables  -->
+        <script type="text/javascript" src="../css/addons/datatables.min.js" th:href="@{../css/addons/datatables.min.js}"></script>
+
+    </div>
+</div>
+<!-- /container -->
+
+<!--Footer-->
+<footer class="page-footer font-small blue">
+    <!-- Copyright-->
+    <div class="footer-copyright text-center py3">© 2020 Copyright: EJE</div>
+</footer>
+</body>
+</html>

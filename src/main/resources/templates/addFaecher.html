@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Add Fächer</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" /> <link href="../static/css/mdb.min.css" rel="stylesheet" th:href="@{/css/mdb.min.css}" />
+    <!--My Css -->
+    <link href="../static/css/styles.css" rel="stylesheet" th:href="@{/css/styles.css}" />
+    <!-- MDBootstrap Datatables  -->
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="../css/fonts/font-awesome.min.css">
+
+
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <a class="navbar-brand" href="http://www.webmen.de" target="_blank"><img src="../css/img/WebMen_exakt.png" width="150" height="32" class="d-inline-block align-top" alt="" loading="lazy" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="index2">Home </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="addFaecher">Create Fächer<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</head>
+
+<body class="indexBody">
+<form th:action="@{/addFaecher}" th:object="${newFach}" method="POST">
+    <div class="jumbotron jumbotron">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-4">Create Fächer</h1>
+                <p class="lead">Create new Fach...</p>
+            </div>
+        </div>
+        <br />
+        <hr class="my-4" />
+        <div class="container">
+            <table class="table table-bordered table-dark">
+                <tr align="center">
+                    <td><label>Name:</label></td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                </tr>
+
+                <tr align="center">
+                    <td><label>Abkürzung:</label></td>
+                    <td><input type="text" th:field="*{abkuerzung}" /></td>
+                </tr>
+
+                <tr align="center">
+                    <td><label>Stufe:</label></td>
+                    <td><input type="radio" th:field="*{stufe}" value="Grundschule" />Grundschule &nbsp;
+                        <input type="radio" th:field="*{stufe}" value="Hauptschulen" />Hauptschulen
+                        <input type="radio" th:field="*{stufe}" value="Realschulen" />Realschule
+                        <input type="radio" th:field="*{stufe}" value="Gymnasien" />Gymnasium</td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <input type="submit" value="Create" class="btn btn-success btn-lg btn-block" />
+            <br />
+            <br />
+
+            <!-- Bootstrap core JavaScript
+    ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="../css/js/bootstrap.js" th:href="@{../css/js/bootstrap.js}"></script>
+            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        </div>
+    </div>
+    <!-- /container -->
+</form>
+<!--Footer-->
+<footer class="page-footer font-small blue">
+    <!-- Copyright-->
+    <div class="footer-copyright text-center py3">© 2020 Copyright: EJE</div>
+</footer>
+</body>
+</html>

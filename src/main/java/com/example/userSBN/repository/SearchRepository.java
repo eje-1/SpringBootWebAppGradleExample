@@ -1,5 +1,6 @@
 package com.example.userSBN.repository;
 
+import com.example.userSBN.model.Faecher;
 import com.example.userSBN.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,5 +14,6 @@ public interface SearchRepository extends JpaRepository<User, Integer> {
 
     @Query(value = "SELECT name, vorname, email, telefon, strasse, ort, plz, sex, geburtstag, spitzname FROM users WHERE to_tsvector(name) @@ to_tsquery(':keyword')", nativeQuery = true)
     public List<User> search(@Param("keyword") String keyword);
+
 
 }

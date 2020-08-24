@@ -23,7 +23,7 @@ public class Faecher {
     private String name;
 
     @NotNull
-    @Column(name = "ankuerzung")
+    @Column(name = "abkuerzung")
     private String abkuerzung;
 
     @NotNull
@@ -37,12 +37,13 @@ public class Faecher {
     }
 
 
-    public Faecher(int id, String name, String abkuerzung, String stufe) {
-        this.id = id;
+    public Faecher(String name, String abkuerzung, String stufe) {
         this.name = name;
         this.abkuerzung = abkuerzung;
         this.stufe = stufe;
     }
+
+
 
     //Getter and Setter
 

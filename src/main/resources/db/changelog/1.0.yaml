@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - include:
+      file: 1.0/create-master_faecher.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 1.0/create-master_faecher.yaml
+      relativeToChangelogFile: true

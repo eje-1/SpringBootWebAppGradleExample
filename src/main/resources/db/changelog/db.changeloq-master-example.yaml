@@ -1,11 +1,6 @@
 databaseChangeLog:
-<<<<<<< HEAD
-  - includeAll:
-      path: db/changelog/1.0
-=======
   - include:
       file: 1.0/create-faecher_student.yaml
 
   - include:
       file: 1.0/create-master_faecher.yaml
->>>>>>> 2e88de95b98b77411b792f173c1891c457168d16

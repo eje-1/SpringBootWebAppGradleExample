@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - include:
+      file: 1.0/create_faecher_table.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 1.0/create_student_and_faecher_table.yaml
+      relativeToChangelogFile: true

@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_student_and_faecher_table
+      logicalFilePath: create_student_and_faecher_table.yaml
+      author: ernest
+      changes:
+        - createTable:
+            tableName: faecher_student
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: student_id
+                  type: serial
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fach_id
+                  type: serial
+                  constraints:
+                    nullable: false
